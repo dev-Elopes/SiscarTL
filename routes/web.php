@@ -16,26 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-if (app()->environment('local')) {
-    Route::get('/dev-preview-screen/{screen}', function ($screen) {
-        $user = \App\Models\User::first();
-        if ($user) {
-            auth()->login($user);
-        }
-        $vehicle = \App\Models\Vehicle::first();
-        return match ($screen) {
-            'dashboard' => redirect()->route('dashboard'),
-            'abastecimentos', 'fuels' => redirect()->route('fuels.index'),
-            'ipva-taxas', 'obligations' => redirect()->route('obligations.index'),
-            'manutencoes', 'maintenances' => redirect()->route('maintenances.index'),
-            'nova-manutencao' => redirect()->route('maintenances.create'),
-            'veiculos', 'vehicles' => redirect()->route('vehicles.index'),
-            'veiculo-detalhe' => $vehicle ? redirect()->route('vehicles.show', $vehicle) : redirect()->route('vehicles.index'),
-            'certificado' => $vehicle ? redirect()->route('reports.certificate', $vehicle) : redirect()->route('reports.index'),
-            default => redirect()->route('dashboard'),
-        };
-    });
-}
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard (Visão Geral & Indicadores)

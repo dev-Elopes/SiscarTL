@@ -45,9 +45,20 @@ O **SISCARTL (AutoCare)** é uma aplicação completa e moderna para gerenciamen
 
 ---
 
-## 📂 Estrutura das Views (100% em Português)
+## 🤖 Skills de IA & Engenharia Agêntica Utilizadas
 
-As telas do projeto seguem o padrão arquitetural do Laravel, com nomes em português claros e padronizados:
+Este projeto foi acelerado e arquitetado com o suporte de **skills de Inteligência Artificial** especializadas:
+
+- **`laravel-specialist`**: Domínio das melhores práticas do ecossistema Laravel 11, Eloquent ORM, Form Requests, Services e arquitetura escalável.
+- **`php-best-practices`**: Escrita de código limpo com tipagem estrita (`declare(strict_types=1)`), prevenção de `mixed`, robustez de tipos e segurança contra falhas em tempo de execução.
+- **`remotion-motion-design`**: Integração com motion design programático em React e TypeScript para criação de vídeos de telemetria e apresentação técnica de produto.
+- **`security-hardening & TDD`**: Desenvolvimento guiado por testes (TDD) com foco em segurança defensiva, isolamento de dados entre usuários (prevenção a IDOR) e proteção contra ataques de injeção.
+
+---
+
+## 📂 Estrutura das Telas (100% em Português)
+
+As telas do projeto seguem nomes em português claros e intuitivos, mantendo os arquivos internos no padrão de boas práticas do ecossistema:
 
 ```
 resources/views/
@@ -78,7 +89,7 @@ resources/views/
 - **Backend:** PHP 8.2+ e [Laravel 11](https://laravel.com)
 - **Frontend:** Blade Templates, [Tailwind CSS](https://tailwindcss.com) e [Chart.js](https://www.chartjs.org/)
 - **Banco de Dados:** SQLite (Desenvolvimento/Offline-first) ou MySQL / PostgreSQL
-- **Autenticação:** Laravel Breeze com proteção CSRF e isolamento de dados
+- **Autenticação:** Laravel Breeze com proteção CSRF e isolamento rigoroso por usuário
 - **Testes:** PHPUnit / Pest com suíte de segurança e regressão
 
 ---
@@ -94,8 +105,8 @@ resources/views/
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/siscartl.git
-   cd siscartl
+   git clone https://github.com/dev-Elopes/SiscarTL.git
+   cd SiscarTL
    ```
 
 2. **Instale as dependências do PHP:**
@@ -114,26 +125,25 @@ resources/views/
    php artisan key:generate
    ```
 
-5. **Execute as Migrações e o Seeder Inicial com Dados Demo:**
+5. **Execute as Migrações do Banco de Dados:**
    ```bash
-   php artisan migrate --seed
+   php artisan migrate
    ```
-   *(Isto criará os veículos de teste, histórico de revisões, abastecimentos e usuário padrão)*
 
 6. **Inicie os servidores locais:**
    - Em um terminal:
      ```bash
      php artisan serve
      ```
-   - Em outro terminal (para compilar os estilos):
+   - Em outro terminal (para compilação de assets):
      ```bash
      npm run dev
      ```
 
-7. **Acesse no navegador:**
-   - URL: `http://localhost:8000`
-   - **E-mail:** `demo@veiculos.com`
-   - **Senha:** `password`
+7. **Acesso com Segurança:**
+   - Acesse `http://localhost:8000/register` no seu navegador.
+   - Cadastre sua conta de administrador com suas credenciais seguras.
+   - O sistema isola 100% dos veículos e registros cadastrados por cada conta.
 
 ---
 
@@ -154,6 +164,7 @@ php artisan test
 - **Isolamento de Dados:** Cada usuário acessa única e exclusivamente os veículos e dados cadastrados por sua própria conta (`user_id`).
 - **Validação Estrita:** Proteção contra manipulação de formulários (IDs externos, IDOR e injeção).
 - **Proteção CSRF & Rate-Limiting:** Proteção nativa contra requisições fraudulentas e ataques de força bruta.
+- **Senhas Seguras:** Hashing com Bcrypt (12 rounds) por padrão.
 
 ---
 
